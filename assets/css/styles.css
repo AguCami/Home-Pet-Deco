@@ -123,7 +123,11 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-family: var(--font-display); font-weight: 600;
   font-size: 20px; line-height: 1.04; letter-spacing: -.015em; white-space: nowrap;
 }
-.brand__name em { font-style: normal; color: var(--naranja); }
+/* el ampersand de Fraunces se empasta a este tamaño: se usa el del cuerpo */
+.brand__name em {
+  font-style: normal; color: var(--naranja);
+  font-family: var(--font-body); font-size: .84em; font-weight: 600;
+}
 .footer .brand__logo { height: 82px; }
 .footer .brand__name { font-size: 24px; }
 
