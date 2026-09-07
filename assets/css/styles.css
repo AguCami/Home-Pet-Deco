@@ -33,8 +33,7 @@
   --shadow-m: 0 2px 6px rgba(33,30,26,.06), 0 16px 40px rgba(33,30,26,.10);
   --shadow-l: 0 -8px 40px rgba(33,30,26,.14);
 
-  --header-h: 62px;        /* compacto, al hacer scroll */
-  --header-h-alto: 92px;   /* en reposo, arriba de todo */
+  --header-h: 92px;
   --max: 1120px;
   --ease: cubic-bezier(.22,.61,.36,1);
 }
@@ -104,31 +103,28 @@ ul { margin: 0; padding: 0; list-style: none; }
    ============================================================ */
 .header {
   position: sticky; top: 0; z-index: 60;
-  height: var(--header-h-alto);
+  height: var(--header-h);
   display: flex; align-items: center;
   background: rgba(251,248,243,.82);
   backdrop-filter: saturate(180%) blur(14px);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
   border-bottom: 1px solid transparent;
-  transition: height .3s var(--ease), border-color .3s var(--ease), background-color .3s var(--ease);
+  transition: border-color .3s var(--ease), background-color .3s var(--ease);
 }
-.header.is-stuck { height: var(--header-h); border-bottom-color: var(--line); }
+.header.is-stuck { border-bottom-color: var(--line); }
 .header__inner {
   width: 100%; max-width: var(--max); margin-inline: auto;
   padding-inline: var(--pad);
   display: flex; align-items: center; gap: 12px;
 }
 .brand { display: flex; align-items: center; gap: 10px; margin-right: auto; }
-.brand__logo { height: 64px; width: auto; flex: none; transition: height .3s var(--ease); }
+.brand__logo { height: 64px; width: auto; flex: none; }
 .brand__name {
   font-family: var(--font-display); font-weight: 600;
   font-size: 20px; line-height: 1.04; letter-spacing: -.015em; white-space: nowrap;
-  transition: font-size .3s var(--ease);
+  text-align: center;
 }
 .brand__name em { font-style: normal; color: var(--naranja); }
-/* al compactarse el encabezado, la marca acompaña */
-.header.is-stuck .brand__logo { height: 46px; }
-.header.is-stuck .brand__name { font-size: 15px; }
 .footer .brand__logo { height: 82px; }
 .footer .brand__name { font-size: 24px; }
 
@@ -165,7 +161,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   visibility: hidden;
 }
 .mobile-menu.is-open { transform: translateY(0); visibility: visible; }
-.mobile-menu__top { display: flex; align-items: center; min-height: var(--header-h-alto); margin-bottom: 18px; }
+.mobile-menu__top { display: flex; align-items: center; min-height: var(--header-h); margin-bottom: 18px; }
 .mobile-menu__top .brand { margin-right: auto; }
 .mobile-menu a.mobile-link {
   display: block; padding: 14px 0;
@@ -550,12 +546,10 @@ body.is-locked { overflow: hidden; }
    Tablet / Desktop
    ============================================================ */
 @media (min-width: 700px) {
-  :root { --pad: 32px; --header-h: 68px; --header-h-alto: 108px; }
+  :root { --pad: 32px; --header-h: 108px; }
   body { font-size: 16px; }
   .brand__logo { height: 78px; }
   .brand__name { font-size: 24px; }
-  .header.is-stuck .brand__logo { height: 50px; }
-  .header.is-stuck .brand__name { font-size: 16px; }
   .footer .brand__logo { height: 96px; }
   .footer .brand__name { font-size: 28px; }
   .values { grid-template-columns: repeat(4, 1fr); }
