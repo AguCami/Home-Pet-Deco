@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Organizador de escritorio impreso en 3D">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F0E7DC"/><stop offset="1" stop-color="#DED0BC"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <g fill="none" stroke="#211E1A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".82">
+
+    <path d="M170 288h260v148H170z"/>
+    <path d="M170 288l32-32h260l-32 32M462 256v148l-32 32M300 288v148"/>
+    <path d="M228 288v-84M256 288v-102M356 288v-64"/>
+    <circle cx="228" cy="196" r="10"/><circle cx="256" cy="178" r="10"/>
+  </g>
+</svg>

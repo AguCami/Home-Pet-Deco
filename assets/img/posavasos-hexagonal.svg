@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Set de cuatro posavasos hexagonales impresos en 3D">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F1E8DA"/><stop offset="1" stop-color="#DFD0B9"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <g fill="none" stroke="#211E1A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".82">
+    <path d="M204 158l54 31v62l-54 31-54-31v-62z"/>
+    <path d="M172 205h64M172 235h64"/>
+    <path d="M396 158l54 31v62l-54 31-54-31v-62z"/>
+    <path d="M364 205h64M364 235h64"/>
+    <path d="M204 318l54 31v62l-54 31-54-31v-62z"/>
+    <path d="M172 365h64M172 395h64"/>
+    <path d="M396 318l54 31v62l-54 31-54-31v-62z"/>
+    <path d="M364 365h64M364 395h64"/>
+  </g>
+</svg>

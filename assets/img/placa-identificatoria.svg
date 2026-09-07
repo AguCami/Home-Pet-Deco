@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Placa identificatoria personalizada impresa en 3D">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E6E9DD"/><stop offset="1" stop-color="#CBD6C3"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <g fill="none" stroke="#211E1A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".82">
+    <circle cx="300" cy="330" r="118"/>
+    <circle cx="300" cy="330" r="100" stroke-dasharray="3 16"/>
+    <circle cx="300" cy="178" r="30"/>
+    <path d="M300 208v-6"/>
+    <ellipse cx="300" cy="350" rx="36" ry="27" stroke="#B4643E"/>
+    <circle cx="260" cy="306" r="13" stroke="#B4643E"/>
+    <circle cx="298" cy="288" r="13" stroke="#B4643E"/>
+    <circle cx="336" cy="302" r="13" stroke="#B4643E"/>
+    <path d="M254 404h92"/>
+  </g>
+</svg>

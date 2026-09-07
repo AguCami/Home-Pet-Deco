@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Juguete interactivo puzzle para mascotas impreso en 3D">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E9EBDE"/><stop offset="1" stop-color="#CFD9C5"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <g fill="none" stroke="#211E1A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".82">
+
+    <circle cx="300" cy="300" r="146"/>
+    <circle cx="300" cy="300" r="66"/>
+    <path d="M300 154v88M446 300h-88M300 446v-88M154 300h88"/>
+    <circle cx="216" cy="216" r="18" stroke="#B4643E"/>
+    <circle cx="384" cy="216" r="18" stroke="#B4643E"/>
+    <circle cx="216" cy="384" r="18" stroke="#B4643E"/>
+    <circle cx="384" cy="384" r="18" stroke="#B4643E"/>
+  </g>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 56 800 552" width="800" height="552" role="img" aria-label="Objetos de decoración y accesorios para mascotas impresos en 3D">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F3E7D8"/><stop offset=".55" stop-color="#EBDCC8"/><stop offset="1" stop-color="#DCD6C2"/>
+    </linearGradient>
+    <linearGradient id="niche" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBF6EE"/><stop offset="1" stop-color="#EFE2CF"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="640" fill="url(#bg)"/>
+  <circle cx="668" cy="120" r="70" fill="#E6C8AE" opacity=".5"/>
+  <path d="M250 500V250a150 150 0 0 1 300 0v250z" fill="url(#niche)"/>
+  <g fill="none" stroke="#211E1A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity=".8">
+    <path d="M250 500V250a150 150 0 0 1 300 0v250"/>
+    <path d="M120 500h560"/>
+    <!-- jarrón -->
+    <path d="M318 300c-4 30-34 48-34 100 0 62 30 100 72 100s72-38 72-100c0-52-30-70-34-100"/>
+    <path d="M318 300h76"/>
+    <path d="M288 362c40 20 96 20 136 0M286 400c40 20 100 20 140 0"/>
+    <!-- lámpara luna -->
+    <circle cx="546" cy="330" r="62"/>
+    <circle cx="526" cy="314" r="13"/><circle cx="564" cy="350" r="8"/>
+    <path d="M524 392h44l-9 30h-26zM504 430h84"/>
+    <!-- macetero con planta -->
+    <path d="M176 420h96l-13 62h-70z"/>
+    <path d="M224 420c0-32 16-52 42-58-2 30-17 48-42 58zM224 420c0-24-12-40-33-46 2 24 13 38 33 46z"/>
+    <!-- gato -->
+    <path d="M600 470c-16 26-18 54-11 72h100c7-18 5-46-11-72"/>
+    <circle cx="639" cy="440" r="38"/>
+    <path d="M609 416l-6-32 30 15M669 416l6-32-30 15"/>
+    <path d="M689 542c36 4 42-20 27-36"/>
+    <path d="M626 444h.5M652 444h.5" stroke-width="9"/>
+    <path d="M639 456c-6 6-14 4-16-2M639 456c6 6 14 4 16-2"/>
+    <!-- comedero -->
+    <path d="M700 520h72M706 520c0 22 12 34 30 34s30-12 30-34" stroke="#B4643E"/>
+  </g>
+</svg>
