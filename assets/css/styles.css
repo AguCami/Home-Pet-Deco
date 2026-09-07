@@ -116,13 +116,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   padding-inline: var(--pad);
   display: flex; align-items: center; gap: 12px;
 }
-.brand { display: flex; align-items: center; gap: 9px; margin-right: auto; }
-.brand__mark { width: 30px; height: 30px; flex: none; }
-.brand__name {
-  font-family: var(--font-display); font-weight: 600;
-  font-size: 16px; letter-spacing: -.015em; white-space: nowrap;
-}
-.brand__name em { font-style: normal; color: var(--clay); }
+.brand { display: flex; align-items: center; margin-right: auto; }
+.brand__logo { height: 34px; width: auto; flex: none; }
+.footer .brand__logo { height: 42px; }
 
 .nav-desktop { display: none; }
 
@@ -493,7 +489,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* ============================================================
    Footer
    ============================================================ */
-.footer { background: var(--cream-2); padding: 44px 0 30px; margin-top: 10px; }
+.footer { background: var(--cream-2); padding: 44px 0 86px; margin-top: 10px; }
 .footer .brand { margin-bottom: 12px; }
 .footer__about { font-size: 13px; color: var(--ink-soft); max-width: 34ch; }
 .footer__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 30px; }
@@ -544,6 +540,8 @@ body.is-locked { overflow: hidden; }
 @media (min-width: 700px) {
   :root { --pad: 32px; --header-h: 68px; }
   body { font-size: 16px; }
+  .brand__logo { height: 38px; }
+  .footer .brand__logo { height: 48px; }
   .values { grid-template-columns: repeat(4, 1fr); }
   .cats { grid-template-columns: 1fr 1fr; }
   .cat { min-height: 260px; padding: 24px; }
@@ -552,6 +550,7 @@ body.is-locked { overflow: hidden; }
   .card__name { font-size: 15px; }
   .card__price { font-size: 15px; }
   .steps { grid-template-columns: repeat(3, 1fr); }
+  .footer { padding-bottom: 40px; }
   .section { padding: 76px 0; }
   .hero { padding: 56px 0 20px; }
   .footer__cols { grid-template-columns: repeat(3, 1fr); }

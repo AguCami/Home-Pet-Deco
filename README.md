@@ -130,6 +130,20 @@ build). Si cambiás un enlace del menú, acordate de cambiarlo en `index.html`,
 
 ---
 
+## La marca
+
+El logo vive en `assets/img/` en cuatro versiones. El original es `logo.svg`; las otras
+tres se derivan de él, así que si el logo cambia hay que regenerarlas.
+
+| Archivo | Cuándo usarlo |
+|---|---|
+| `logo.svg` | Original completo, vertical (dibujo arriba, nombre en dos líneas abajo). Para imprimir, redes o cualquier lugar con espacio |
+| `logo-horizontal.svg` | Dibujo + nombre en una sola línea. Es el que usa el sitio en el encabezado, el menú y el pie |
+| `logo-isotipo.svg` | Solo el perro en la bañera, sin texto. Para avatares o sellos |
+| `favicon.svg` | El isotipo sobre un fondo crema redondeado. Es el ícono de la pestaña del navegador |
+
+Los colores del logo son verde azulado `#438584` y naranja `#CE7224`.
+
 ## Paleta y tipografías
 
 - Crema `#FBF8F3`, tinta `#211E1A`, terracota `#B4643E`, verde salvia `#7C8B72`.
