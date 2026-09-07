@@ -180,7 +180,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* ============================================================
    Hero
    ============================================================ */
-.hero { position: relative; padding: 40px 0 12px; overflow: hidden; }
+.hero { position: relative; padding: 22px 0 12px; overflow: hidden; }
 .hero__blob {
   position: absolute; z-index: 0; border-radius: 50%;
   filter: blur(46px); opacity: .5; pointer-events: none;
@@ -188,7 +188,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .hero__blob--a { width: 300px; height: 300px; background: #E8C9B4; top: -90px; right: -110px; }
 .hero__blob--b { width: 260px; height: 260px; background: #CFD8C6; bottom: -120px; left: -110px; }
 .hero__inner { position: relative; z-index: 1; }
-.hero h1 { margin: 14px 0 0; }
+.hero h1 { margin: 0; }
 .hero h1 em { font-style: italic; color: var(--clay); }
 .hero .lead { margin-top: 14px; max-width: 46ch; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
@@ -565,7 +565,7 @@ body.is-locked { overflow: hidden; }
   .steps { grid-template-columns: repeat(3, 1fr); }
   .footer { padding-bottom: 40px; }
   .section { padding: 76px 0; }
-  .hero { padding: 56px 0 20px; }
+  .hero { padding: 30px 0 20px; }
   .footer__cols { grid-template-columns: repeat(3, 1fr); }
   .drawer {
     left: auto; top: 0; width: 420px; max-height: none;
