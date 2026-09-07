@@ -139,7 +139,7 @@ recortadas al dibujo, generadas a partir de él.
 | Archivo | Dónde se usa | Peso |
 |---|---|---|
 | `logo.svg` | Original. Para imprimir o rehacer las demás versiones | 1 MB |
-| `logo-header.png` | Encabezado, menú y pie del sitio | 33 KB |
+| `logo-header.png` | Encabezado, menú y pie del sitio | 72 KB |
 | `logo-512.png` | Imagen al compartir el sitio en redes (`og:image`) | 157 KB |
 | `favicon.png` | Ícono de la pestaña del navegador | 6 KB |
 | `apple-touch-icon.png` | Ícono al agregar el sitio a la pantalla de inicio en iPhone | 30 KB |
@@ -147,9 +147,11 @@ recortadas al dibujo, generadas a partir de él.
 Si cambiás el logo, reemplazá `logo.svg` y volvé a generar los PNG (cualquier editor de
 imágenes sirve: recortá al dibujo y exportá en esos tamaños con fondo transparente).
 
-Como a 42 px el texto de la bañera no se lee, en el encabezado el logo va acompañado
-del nombre escrito en Fraunces. El naranja del logo es `#E47416` y está en el CSS como
-la variable `--naranja`.
+En el encabezado el logo va acompañado del nombre escrito en Fraunces, en dos líneas
+("Home & Pet" arriba, "Deco" abajo) siguiendo la forma del logo. El encabezado arranca
+alto para que el logo se aprecie y se compacta solo al hacer scroll, para no comerse
+la pantalla del celular mientras se navega. El naranja del logo es `#E47416` y está en
+el CSS como la variable `--naranja`.
 
 ## Paleta y tipografías
 
