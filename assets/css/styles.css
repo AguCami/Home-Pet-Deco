@@ -122,7 +122,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 .brand__name {
   font-family: var(--font-display); font-weight: 600;
   font-size: 20px; line-height: 1.04; letter-spacing: -.015em; white-space: nowrap;
-  text-align: center;
 }
 .brand__name em { font-style: normal; color: var(--naranja); }
 .footer .brand__logo { height: 82px; }

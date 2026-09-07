@@ -148,7 +148,7 @@ Si cambiás el logo, reemplazá `logo.svg` y volvé a generar los PNG (cualquier
 imágenes sirve: recortá al dibujo y exportá en esos tamaños con fondo transparente).
 
 En el encabezado el logo va acompañado del nombre escrito en Fraunces, en dos líneas
-centradas ("Home & Pet" arriba, "Deco" abajo) siguiendo la forma del logo. El
+("Home & Pet" arriba, "Deco" abajo) alineadas a la izquierda. El
 encabezado mantiene siempre la misma altura (`--header-h`). El naranja del logo es
 `#E47416` y está en el CSS como la variable `--naranja`.
 
