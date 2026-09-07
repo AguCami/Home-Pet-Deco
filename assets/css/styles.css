@@ -12,6 +12,7 @@
   --ink-soft:   #5C554C;
   --ink-mute:   #8B8378;
   --clay:       #B4643E;
+  --naranja:    #E47416;   /* naranja del logo */
   --clay-dark:  #97502E;
   --sage:       #7C8B72;
   --white:      #FFFFFF;
@@ -116,9 +117,15 @@ ul { margin: 0; padding: 0; list-style: none; }
   padding-inline: var(--pad);
   display: flex; align-items: center; gap: 12px;
 }
-.brand { display: flex; align-items: center; margin-right: auto; }
-.brand__logo { height: 34px; width: auto; flex: none; }
-.footer .brand__logo { height: 42px; }
+.brand { display: flex; align-items: center; gap: 10px; margin-right: auto; }
+.brand__logo { height: 42px; width: auto; flex: none; }
+.brand__name {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: 16px; letter-spacing: -.015em; white-space: nowrap;
+}
+.brand__name em { font-style: normal; color: var(--naranja); }
+.footer .brand__logo { height: 60px; }
+.footer .brand__name { font-size: 20px; }
 
 .nav-desktop { display: none; }
 
@@ -540,8 +547,9 @@ body.is-locked { overflow: hidden; }
 @media (min-width: 700px) {
   :root { --pad: 32px; --header-h: 68px; }
   body { font-size: 16px; }
-  .brand__logo { height: 38px; }
-  .footer .brand__logo { height: 48px; }
+  .brand__logo { height: 46px; }
+  .brand__name { font-size: 17px; }
+  .footer .brand__logo { height: 68px; }
   .values { grid-template-columns: repeat(4, 1fr); }
   .cats { grid-template-columns: 1fr 1fr; }
   .cat { min-height: 260px; padding: 24px; }

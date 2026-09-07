@@ -132,17 +132,24 @@ build). Si cambiás un enlace del menú, acordate de cambiarlo en `index.html`,
 
 ## La marca
 
-El logo vive en `assets/img/` en cuatro versiones. El original es `logo.svg`; las otras
-tres se derivan de él, así que si el logo cambia hay que regenerarlas.
+El logo original está en `assets/img/logo.svg`. Pesa 1 MB (es un vector de más de dos
+mil trazos con degradados), así que **el sitio no lo carga**: usa versiones PNG
+recortadas al dibujo, generadas a partir de él.
 
-| Archivo | Cuándo usarlo |
-|---|---|
-| `logo.svg` | Original completo, vertical (dibujo arriba, nombre en dos líneas abajo). Para imprimir, redes o cualquier lugar con espacio |
-| `logo-horizontal.svg` | Dibujo + nombre en una sola línea. Es el que usa el sitio en el encabezado, el menú y el pie |
-| `logo-isotipo.svg` | Solo el perro en la bañera, sin texto. Para avatares o sellos |
-| `favicon.svg` | El isotipo sobre un fondo crema redondeado. Es el ícono de la pestaña del navegador |
+| Archivo | Dónde se usa | Peso |
+|---|---|---|
+| `logo.svg` | Original. Para imprimir o rehacer las demás versiones | 1 MB |
+| `logo-header.png` | Encabezado, menú y pie del sitio | 33 KB |
+| `logo-512.png` | Imagen al compartir el sitio en redes (`og:image`) | 157 KB |
+| `favicon.png` | Ícono de la pestaña del navegador | 6 KB |
+| `apple-touch-icon.png` | Ícono al agregar el sitio a la pantalla de inicio en iPhone | 30 KB |
 
-Los colores del logo son verde azulado `#438584` y naranja `#CE7224`.
+Si cambiás el logo, reemplazá `logo.svg` y volvé a generar los PNG (cualquier editor de
+imágenes sirve: recortá al dibujo y exportá en esos tamaños con fondo transparente).
+
+Como a 42 px el texto de la bañera no se lee, en el encabezado el logo va acompañado
+del nombre escrito en Fraunces. El naranja del logo es `#E47416` y está en el CSS como
+la variable `--naranja`.
 
 ## Paleta y tipografías
 
