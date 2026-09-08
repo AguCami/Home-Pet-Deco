@@ -89,6 +89,16 @@ const imagen = (id) => "assets/img/" + id + ".svg";   // ← cambiar .svg por .j
 
 ---
 
+## Por qué el CSS lleva `?v=`
+
+Los enlaces al CSS y al JavaScript terminan en `?v=20260908`. Sirve para que, cuando
+cambies el diseño, el navegador de quien ya visitó el sitio no siga mostrando la versión
+vieja guardada en su caché.
+
+**Cada vez que cambies `styles.css`, `data.js` o `app.js`, subí ese número** (lo más
+simple es poner la fecha del día) en las tres páginas: `index.html`, `catalogo.html` y
+`producto.html`. Si no lo hacés, tus cambios pueden tardar horas en verse.
+
 ## Cómo verlo en tu computadora
 
 Doble clic en `index.html` alcanza para mirarlo. Para que funcione igual que en
