@@ -17,7 +17,9 @@
 
   const producto = (id) => PRODUCTOS.find((p) => p.id === id);
 
-  const imagen = (id) => "assets/img/" + id + ".svg";
+  /* Los productos nuevos traen su archivo en `imagen`; los viejos siguen
+     con la ilustración <id>.svg. */
+  const imagen = (p) => "assets/img/" + (p && p.imagen ? p.imagen : (p && p.id ? p.id : p) + ".svg");
 
   const colorNombre = (cid) => (COLORES[cid] ? COLORES[cid].nombre : "");
 
@@ -153,7 +155,7 @@
       '<article class="card reveal">' +
         '<div class="card__top">' +
         '<a class="card__media" href="producto.html?id=' + p.id + '" aria-label="' + p.nombre + '">' +
-          '<img src="' + imagen(p.id) + '" alt="' + p.nombre + '" width="600" height="600" loading="lazy">' +
+          '<img src="' + imagen(p) + '" alt="' + p.nombre + '" width="600" height="600" loading="lazy">' +
         "</a>" +
         tag +
         (agotado
@@ -206,7 +208,7 @@
           return (
             '<div class="line">' +
               '<a class="line__img" href="producto.html?id=' + p.id + '">' +
-                '<img src="' + imagen(p.id) + '" alt="' + p.nombre + '" loading="lazy">' +
+                '<img src="' + imagen(p) + '" alt="' + p.nombre + '" loading="lazy">' +
               "</a>" +
               '<div class="line__body">' +
                 '<a href="producto.html?id=' + p.id + '"><p class="line__name">' + p.nombre + "</p></a>" +
@@ -299,6 +301,14 @@
     let cat = params.get("cat") || "todos";
     let orden = "destacados";
 
+    const cajaChips = $("[data-chips]");
+    if (cajaChips) {
+      cajaChips.innerHTML =
+        '<button class="chip" data-cat="todos" aria-pressed="true">Todo</button>' +
+        Object.entries(CATEGORIAS)
+          .map(([id, c]) => '<button class="chip" data-cat="' + id + '" aria-pressed="false">' + c.nombre + "</button>")
+          .join("");
+    }
     const chips = $$("[data-cat]");
     const contador = $("[data-count]");
     const select = $("[data-orden]");
@@ -370,7 +380,7 @@
     cont.innerHTML =
       '<div class="pd__layout">' +
         '<div class="pd__media reveal">' +
-          '<img src="' + imagen(p.id) + '" alt="' + p.nombre + '" width="600" height="600">' +
+          '<img src="' + imagen(p) + '" alt="' + p.nombre + '" width="600" height="600">' +
         "</div>" +
         '<div class="pd__head reveal">' +
           '<p class="eyebrow">' + CATEGORIAS[p.categoria].nombre + "</p>" +

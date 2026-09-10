@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Panel de carga · Home &amp; Pet Deco</title>
+<title>Panel · Home &amp; Pet Deco</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#211E1A">
 <link rel="icon" href="assets/img/favicon.png" type="image/png" sizes="64x64">
@@ -17,22 +17,35 @@
 
 <header class="abar">
   <img class="abar__logo" src="assets/img/logo-header.png" alt="">
-  <div class="abar__t">Panel de carga<small>Home &amp; Pet Deco</small></div>
+  <div class="abar__t">Panel<small>Home &amp; Pet Deco</small></div>
   <a class="btn btn--ghost" href="index.html" target="_blank" rel="noopener">Ver la web</a>
-  <button class="btn btn--clay" data-exportar>Generar archivo</button>
+  <button class="btn btn--clay" data-exportar>Publicar cambios</button>
 </header>
 
 <nav class="tabs" role="tablist">
   <button class="tab" role="tab" data-tab="productos" aria-selected="true">Productos</button>
-  <button class="tab" role="tab" data-tab="negocio" aria-selected="false">Datos del negocio</button>
-  <button class="tab" role="tab" data-tab="ayuda" aria-selected="false">Cómo se usa</button>
+  <button class="tab" role="tab" data-tab="colores" aria-selected="false">Colores y categorías</button>
+  <button class="tab" role="tab" data-tab="precios" aria-selected="false">Precios</button>
+  <button class="tab" role="tab" data-tab="negocio" aria-selected="false">Negocio</button>
+  <button class="tab" role="tab" data-tab="ayuda" aria-selected="false">Ayuda</button>
 </nav>
 
 <!-- ===================== PRODUCTOS ===================== -->
 <main class="panel" data-panel="productos">
+  <div class="resumen" data-resumen></div>
+
   <div class="cols">
     <div class="lista-wrap">
-      <input class="buscador" type="text" data-buscador placeholder="Buscar producto…" aria-label="Buscar producto">
+      <div class="filtros">
+        <input class="buscador" type="text" data-buscador placeholder="Buscar producto…" aria-label="Buscar producto">
+        <select class="select" data-filtro-cat aria-label="Filtrar por categoría"></select>
+        <select class="select" data-filtro-estado aria-label="Filtrar por estado">
+          <option value="todos">Todos los estados</option>
+          <option value="destacados">Solo los de la portada</option>
+          <option value="sin-stock">Solo sin stock</option>
+          <option value="sin-foto">Solo sin foto propia</option>
+        </select>
+      </div>
       <div class="lista" data-lista></div>
       <div style="display:flex;align-items:center;gap:8px;margin-top:9px">
         <small style="color:var(--ink-mute);font-size:12px" data-total></small>
@@ -48,27 +61,30 @@
 
       <form class="form" data-form hidden autocomplete="off">
         <h2>Editar producto</h2>
-        <p class="form__sub">Los cambios se guardan solos en este navegador. Al terminar, generá el archivo.</p>
+        <p class="form__sub">Los cambios se guardan solos en este navegador. Al terminar, tocá "Publicar cambios".</p>
 
         <div class="campos">
+          <div class="ancho">
+            <label>Foto del producto</label>
+            <div class="foto" data-foto></div>
+            <input type="file" accept="image/*" data-archivo hidden>
+            <p class="ayuda">Se recorta cuadrada y se achica sola. Subí la foto original: de eso se encarga el panel.</p>
+          </div>
+
           <div class="ancho">
             <label for="c-nombre">Nombre</label>
             <input id="c-nombre" name="nombre" type="text" placeholder="Jarrón Espiral">
           </div>
 
           <div>
-            <label for="c-id">Identificador <span>(también es el nombre de la imagen)</span></label>
+            <label for="c-id">Identificador <span>(nombre interno, sin espacios)</span></label>
             <input id="c-id" name="id" type="text" placeholder="jarron-espiral">
-            <p class="ayuda">La imagen tiene que estar en <code>assets/img/</code> con este mismo nombre.</p>
             <p class="error" data-error-id></p>
           </div>
 
           <div>
             <label for="c-categoria">Categoría</label>
-            <select id="c-categoria" name="categoria" class="campo">
-              <option value="hogar">Hogar</option>
-              <option value="mascotas">Mascotas</option>
-            </select>
+            <select id="c-categoria" name="categoria" class="campo"></select>
           </div>
 
           <div>
@@ -78,7 +94,7 @@
 
           <div>
             <label for="c-precioAnterior">Precio anterior <span>(vacío = sin oferta)</span></label>
-            <input id="c-precioAnterior" name="precioAnterior" type="number" min="0" step="100" placeholder="">
+            <input id="c-precioAnterior" name="precioAnterior" type="number" min="0" step="100">
           </div>
 
           <div>
@@ -106,7 +122,7 @@
           </div>
 
           <div class="ancho">
-            <label>Colores disponibles</label>
+            <label>Colores disponibles <span>(se administran en la pestaña "Colores y categorías")</span></label>
             <div class="colores" data-colores></div>
           </div>
 
@@ -117,7 +133,7 @@
 
           <div>
             <label for="c-material">Material</label>
-            <input id="c-material" name="material" type="text" list="materiales" placeholder="PLA de origen vegetal">
+            <input id="c-material" name="material" type="text" list="materiales">
             <datalist id="materiales">
               <option value="PLA de origen vegetal"></option><option value="PLA reciclado"></option>
               <option value="PETG"></option><option value="PETG apto contacto seco"></option>
@@ -126,7 +142,7 @@
 
           <div>
             <label for="c-tiempo">Disponibilidad</label>
-            <input id="c-tiempo" name="tiempo" type="text" list="tiempos" placeholder="Se imprime en 48 h">
+            <input id="c-tiempo" name="tiempo" type="text" list="tiempos">
             <datalist id="tiempos">
               <option value="Entrega inmediata"></option><option value="Se imprime en 24 h"></option>
               <option value="Se imprime en 48 h"></option><option value="Se imprime en 72 h"></option>
@@ -153,6 +169,71 @@
         </div>
       </form>
     </div>
+  </div>
+</main>
+
+<!-- ===================== COLORES Y CATEGORÍAS ===================== -->
+<main class="panel" data-panel="colores" hidden>
+  <div class="bloque">
+    <h2>Colores de filamento</h2>
+    <p>Son los que aparecen para elegir en cada producto. Podés cambiarles el nombre o el tono tocando directamente.</p>
+    <div data-lista-colores></div>
+    <div class="alta">
+      <input type="color" data-color-nuevo-hex value="#B4643E" aria-label="Tono del color nuevo">
+      <input type="text" data-color-nuevo placeholder="Nombre del color nuevo" aria-label="Nombre del color nuevo">
+      <button class="btn btn--clay" type="button" data-agregar-color>Agregar</button>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <h2>Categorías</h2>
+    <p>Aparecen como filtros en el catálogo. Si agregás una, el filtro se crea solo.</p>
+    <div data-lista-categorias></div>
+    <div class="alta">
+      <input type="text" data-categoria-nueva placeholder="Nombre de la categoría nueva" aria-label="Nombre de la categoría nueva">
+      <button class="btn btn--clay" type="button" data-agregar-categoria>Agregar</button>
+    </div>
+    <p class="ayuda" style="margin-top:12px">
+      El menú de arriba del sitio tiene los enlaces a Hogar y Mascotas escritos a mano. Si agregás
+      una categoría y querés que aparezca también ahí, avisame y la sumo.
+    </p>
+  </div>
+</main>
+
+<!-- ===================== PRECIOS ===================== -->
+<main class="panel" data-panel="precios" hidden>
+  <div class="bloque">
+    <h2>Actualizar precios en masa</h2>
+    <p>Para cuando sube todo y hay que remarcar el catálogo entero. Se aplica también al precio anterior de los productos en oferta.</p>
+    <div class="precios">
+      <div>
+        <label for="pct">Porcentaje</label>
+        <input id="pct" type="number" data-pct step="1" placeholder="10">
+        <p class="ayuda">Negativo para bajar: -15</p>
+      </div>
+      <div>
+        <label for="pct-alcance">Aplicar a</label>
+        <select id="pct-alcance" class="select" data-pct-alcance>
+          <option value="todos">Todo el catálogo</option>
+        </select>
+      </div>
+      <div>
+        <label for="pct-redondeo">Redondear a</label>
+        <select id="pct-redondeo" class="select" data-pct-redondeo>
+          <option value="1">Sin redondear</option>
+          <option value="100" selected>Centenas</option>
+          <option value="500">Múltiplos de 500</option>
+          <option value="1000">Miles</option>
+        </select>
+      </div>
+      <div>
+        <button class="btn btn--clay btn--block" type="button" data-aplicar-pct>Aplicar</button>
+      </div>
+    </div>
+    <p class="ayuda" style="margin-top:14px">
+      Se puede deshacer descartando el borrador desde la pestaña "Negocio", siempre que no hayas
+      publicado todavía.
+    </p>
   </div>
 </main>
 
@@ -192,7 +273,7 @@
 
   <div class="bloque">
     <h2>Empezar de nuevo</h2>
-    <p>Descarta todo lo que cargaste acá y vuelve al catálogo que está publicado.</p>
+    <p>Descarta todo lo que cargaste acá, incluidas las fotos, y vuelve al catálogo que está publicado.</p>
     <button class="btn btn--peligro" data-descartar>Descartar cambios</button>
   </div>
 </main>
@@ -200,57 +281,70 @@
 <!-- ===================== AYUDA ===================== -->
 <main class="panel" data-panel="ayuda" hidden>
   <div class="bloque">
-    <h2>Cómo cargar un producto</h2>
+    <h2>Cargar un producto</h2>
     <ol style="padding-left:20px;font-size:14px;line-height:1.75;color:var(--ink-soft)">
-      <li>Tocá <b>+ Nuevo</b> y completá los datos. Se guarda solo mientras escribís.</li>
-      <li>Preparate la foto <b>cuadrada</b> (por ejemplo 1000 × 1000 px) y guardala con el mismo
-          nombre del identificador, en <code>assets/img/</code>.</li>
-      <li>Cuando termines, tocá <b>Generar archivo</b> y descargá el <code>data.js</code>.</li>
-      <li>Subí ese archivo a <code>assets/js/</code> en GitHub, reemplazando el que está.</li>
-      <li>En un par de minutos los cambios se ven en la web.</li>
+      <li>Tocá <b>+ Nuevo</b>.</li>
+      <li>Subí la foto: se recorta cuadrada y se comprime sola. Podés usar la foto original del celular.</li>
+      <li>Completá nombre, precio, resumen y descripción. Elegí los colores.</li>
+      <li>Mirá abajo la vista previa: así se va a ver en el catálogo.</li>
+      <li>Cuando termines, tocá <b>Publicar cambios</b>.</li>
     </ol>
-    <p class="ayuda" style="margin-top:12px">
-      Este panel no toca la web directamente: arma el archivo y vos lo subís. Cuando montemos
-      la base de datos, va a publicar solo y este paso desaparece.
-    </p>
+  </div>
+
+  <div class="bloque">
+    <h2>Publicar</h2>
+    <p>El panel arma un ZIP con el catálogo y las fotos, ya ordenado en las carpetas del sitio.</p>
+    <ol style="padding-left:20px;font-size:14px;line-height:1.75;color:var(--ink-soft)">
+      <li>Tocá <b>Publicar cambios</b> y descargá el ZIP.</li>
+      <li>Descomprimilo en tu computadora.</li>
+      <li>En GitHub, entrá al repositorio y tocá <b>Add file → Upload files</b>.</li>
+      <li>Arrastrá la carpeta <code>assets</code> tal cual salió del ZIP.</li>
+      <li><b>Commit changes</b> y esperá un par de minutos.</li>
+    </ol>
   </div>
 
   <div class="bloque">
     <h2>Cuidado con esto</h2>
     <ul style="padding-left:20px;font-size:14px;line-height:1.7;color:var(--ink-soft);list-style:disc">
-      <li>Lo que cargues vive <b>solo en este navegador</b> hasta que generes el archivo y lo subas.</li>
-      <li>Si abrís el panel en otra computadora, no vas a ver estos cambios.</li>
+      <li>Lo que cargues vive <b>solo en este navegador</b> hasta que publiques. En otra computadora no vas a ver estos cambios.</li>
+      <li>Si borrás los datos de navegación del navegador, se pierde el borrador y las fotos sin publicar.</li>
       <li>El identificador no se puede repetir entre productos.</li>
     </ul>
   </div>
 </main>
 
-<!-- Aviso de cambios sin bajar -->
 <div class="aviso" data-aviso>
-  <span>Tenés cambios <b>sin descargar</b>.</span>
-  <button class="btn btn--clay" data-exportar>Generar archivo</button>
+  <span>Tenés cambios <b>sin publicar</b>.</span>
+  <button class="btn btn--clay" data-exportar>Publicar cambios</button>
 </div>
 
-<!-- Modal de exportación -->
+<div class="toast" data-toast role="status"></div>
+
 <div class="modal" data-modal>
   <div class="modal__caja">
-    <h2>Tu archivo está listo</h2>
-    <p>Este es el <code>data.js</code> con todo lo que cargaste.</p>
+    <h2>Listo para publicar</h2>
+    <p>El ZIP incluye:</p>
+    <ul class="zip-lista" data-resumen-zip></ul>
     <ol>
-      <li>Descargalo o copialo.</li>
-      <li>En GitHub, entrá a <code>assets/js/data.js</code> y reemplazá el contenido.</li>
-      <li>Guardá el cambio y esperá un par de minutos.</li>
+      <li>Descargá el ZIP y descomprimilo.</li>
+      <li>En GitHub: <b>Add file → Upload files</b>.</li>
+      <li>Arrastrá la carpeta <code>assets</code> completa y tocá <b>Commit changes</b>.</li>
     </ol>
-    <textarea data-salida readonly aria-label="Contenido del archivo"></textarea>
+    <details>
+      <summary>Ver el contenido de data.js</summary>
+      <textarea data-salida readonly aria-label="Contenido del archivo"></textarea>
+    </details>
     <div class="modal__pie">
-      <button class="btn btn--clay" data-descargar>Descargar data.js</button>
-      <button class="btn btn--ghost" data-copiar>Copiar todo</button>
+      <button class="btn btn--clay" data-descargar-zip>Descargar ZIP</button>
+      <button class="btn btn--ghost" data-descargar-datos>Solo data.js</button>
+      <button class="btn btn--ghost" data-copiar>Copiar el texto</button>
       <button class="btn btn--ghost" style="margin-left:auto" data-cerrar-modal>Cerrar</button>
     </div>
   </div>
 </div>
 
 <script src="assets/js/data.js?v=20260910"></script>
+<script src="assets/js/admin-archivos.js?v=20260910"></script>
 <script src="assets/js/admin.js?v=20260910"></script>
 </body>
 </html>
