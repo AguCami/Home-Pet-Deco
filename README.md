@@ -145,11 +145,16 @@ npx http-server -p 8080 .
 
 ## Cómo publicarlo gratis
 
-En GitHub: **Settings → Pages → Source: Deploy from a branch**, elegí la rama `main` y
-la carpeta `/ (root)`. En un par de minutos queda online en
-`https://<usuario>.github.io/Home-Pet-Deco/`.
+El sitio está publicado en **https://homeandpetdeco.com.ar**.
 
-También sirve subir la carpeta entera a Netlify, Vercel o Cloudflare Pages arrastrándola.
+El dominio está registrado en NIC Argentina (vence el 10/09/2027 — si se vence, se pierde)
+y sus DNS los maneja Cloudflare en plan gratuito, apuntando a GitHub Pages con cuatro
+registros `A` y un `CNAME` para `www`. El archivo `CNAME` de la raíz del repositorio es el
+que le dice a GitHub que responda en ese dominio: **no lo borres**.
+
+Los registros de Cloudflare tienen que estar en **DNS only** (nube gris), no en modo
+proxy: con el proxy activado GitHub no puede emitir el certificado y el sitio queda con
+error de seguridad.
 
 ---
 
