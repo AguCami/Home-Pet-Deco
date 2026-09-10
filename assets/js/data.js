@@ -12,14 +12,11 @@ const CONFIG = {
   email: "hola@homepetdeco.com",
   instagram: "homepetdeco",
   instagramUrl: "https://instagram.com/homepetdeco",
-  ciudad: "Buenos Aires, Argentina",
+  ciudad: "Colonia Caroya, Córdoba",
   // Formato de precios
   locale: "es-AR",
   moneda: "ARS",
   simbolo: "$",
-  // Envío
-  envioGratisDesde: 45000,
-  costoEnvio: 4500,
 };
 
 const CATEGORIAS = {

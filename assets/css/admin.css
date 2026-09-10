@@ -1,0 +1,129 @@
+/* ============================================================
+   Home & Pet Deco — panel de carga
+   Hereda la paleta del sitio (styles.css) y agrega lo del panel.
+   ============================================================ */
+
+.admin { background: var(--cream-2); min-height: 100vh; }
+
+/* ---------- Barra superior ---------- */
+.abar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px var(--pad);
+  background: var(--ink); color: var(--cream);
+}
+.abar__logo { height: 34px; width: auto; flex: none; }
+.abar__t { font-family: var(--font-display); font-size: 15px; margin-right: auto; }
+.abar__t small { display: block; font-family: var(--font-body); font-size: 11px; opacity: .6; }
+.abar .btn { min-height: 38px; padding: 0 14px; font-size: 13px; }
+.abar .btn--ghost { border-color: rgba(251,248,243,.28); color: var(--cream); }
+.abar .btn--ghost:hover { background: rgba(251,248,243,.12); }
+
+/* ---------- Pestañas ---------- */
+.tabs { display: flex; gap: 4px; padding: 10px var(--pad) 0; background: var(--cream-2); }
+.tab {
+  padding: 9px 16px; border-radius: var(--radius-s) var(--radius-s) 0 0;
+  font-size: 13.5px; font-weight: 600; color: var(--ink-mute);
+}
+.tab[aria-selected="true"] { background: var(--cream); color: var(--ink); }
+
+/* ---------- Estructura ---------- */
+.panel { padding: 16px var(--pad) 90px; background: var(--cream); }
+.cols { display: grid; gap: 16px; }
+@media (min-width: 900px) {
+  .cols { grid-template-columns: 300px 1fr; align-items: start; }
+  .lista-wrap { position: sticky; top: 74px; }
+}
+
+/* ---------- Lista de productos ---------- */
+.buscador {
+  width: 100%; padding: 9px 12px; margin-bottom: 8px;
+  border: 1px solid var(--line); border-radius: var(--radius-pill);
+  background: var(--white); font-size: 13.5px;
+}
+.lista { max-height: 62vh; overflow-y: auto; border: 1px solid var(--line); border-radius: var(--radius-m); background: var(--white); }
+.item {
+  display: flex; align-items: center; gap: 9px; width: 100%;
+  padding: 9px 11px; border-bottom: 1px solid var(--line);
+  text-align: left; font-size: 13px; cursor: pointer;
+}
+.item:last-child { border-bottom: 0; }
+.item:hover { background: var(--cream-2); }
+.item[aria-current="true"] { background: var(--sand); }
+.item img { width: 34px; height: 34px; border-radius: 7px; object-fit: cover; background: var(--cream-2); flex: none; }
+.item b { display: block; font-weight: 600; line-height: 1.25; }
+.item small { color: var(--ink-mute); font-size: 11px; }
+.item .punto { width: 7px; height: 7px; border-radius: 50%; background: var(--sage); flex: none; margin-left: auto; }
+.item .punto.off { background: #C9553F; }
+
+/* ---------- Formulario ---------- */
+.form { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-m); padding: 18px; }
+.form h2 { font-size: 19px; margin-bottom: 4px; }
+.form__sub { font-size: 12.5px; color: var(--ink-mute); margin-bottom: 16px; }
+.campos { display: grid; gap: 13px; }
+@media (min-width: 620px) { .campos { grid-template-columns: 1fr 1fr; } .ancho { grid-column: 1 / -1; } }
+label { display: block; font-size: 12px; font-weight: 600; color: var(--ink-soft); margin-bottom: 4px; }
+label span { font-weight: 400; color: var(--ink-mute); }
+input[type=text], input[type=number], textarea, select.campo {
+  width: 100%; padding: 9px 11px;
+  border: 1px solid var(--line); border-radius: var(--radius-s);
+  background: var(--cream); font-size: 14px;
+}
+textarea { min-height: 96px; resize: vertical; line-height: 1.5; }
+input:focus, textarea:focus, select:focus { outline: 2px solid var(--clay); outline-offset: 1px; }
+.check { display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 500; padding-top: 20px; }
+.check input { width: 17px; height: 17px; accent-color: var(--clay); }
+.ayuda { font-size: 11.5px; color: var(--ink-mute); margin-top: 4px; line-height: 1.45; }
+.error { color: #B3402A; font-size: 11.5px; margin-top: 4px; }
+input.mal, textarea.mal { border-color: #B3402A; }
+
+/* ---------- Colores del producto ---------- */
+.colores { display: flex; flex-wrap: wrap; gap: 7px; }
+.color-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 11px 5px 6px;
+  border: 1px solid var(--line); border-radius: var(--radius-pill);
+  background: var(--cream); font-size: 12.5px;
+}
+.color-chip i { width: 15px; height: 15px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+.color-chip[aria-pressed="true"] { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+/* ---------- Acciones ---------- */
+.acciones { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+.acciones .crece { margin-right: auto; }
+.btn--peligro { color: #B3402A; border: 1px solid rgba(179,64,42,.3); }
+.btn--peligro:hover { background: rgba(179,64,42,.08); }
+
+/* ---------- Vista previa ---------- */
+.previa { margin-top: 16px; }
+.previa h3 { font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 9px; }
+.previa .card { max-width: 190px; }
+
+/* ---------- Aviso de guardado ---------- */
+.aviso {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px var(--pad) calc(11px + env(safe-area-inset-bottom));
+  background: var(--ink); color: var(--cream);
+  font-size: 13px;
+  transform: translateY(100%); transition: transform .3s var(--ease);
+}
+.aviso.on { transform: translateY(0); }
+.aviso b { color: #F0C89B; }
+.aviso .btn { min-height: 36px; padding: 0 14px; font-size: 12.5px; margin-left: auto; }
+
+/* ---------- Configuración del negocio ---------- */
+.bloque { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-m); padding: 18px; margin-bottom: 14px; }
+.bloque > h2 { font-size: 18px; margin-bottom: 3px; }
+.bloque > p { font-size: 12.5px; color: var(--ink-mute); margin-bottom: 15px; }
+
+/* ---------- Modal de exportación ---------- */
+.modal { position: fixed; inset: 0; z-index: 90; display: none; place-items: center; padding: 16px; background: rgba(33,30,26,.5); }
+.modal.on { display: grid; }
+.modal__caja { background: var(--cream); border-radius: var(--radius-l); padding: 22px; width: min(680px, 100%); max-height: 88vh; display: flex; flex-direction: column; }
+.modal h2 { font-size: 20px; margin-bottom: 6px; }
+.modal p { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 14px; }
+.modal ol { padding-left: 20px; margin: 0 0 14px; font-size: 13.5px; color: var(--ink-soft); list-style: decimal; }
+.modal ol li { margin-bottom: 6px; }
+.modal textarea { flex: 1; min-height: 170px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px; background: var(--white); }
+.modal__pie { display: flex; gap: 8px; margin-top: 14px; }

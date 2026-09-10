@@ -94,13 +94,8 @@
       }, 0);
     },
 
-    envio() {
-      const s = this.subtotal();
-      return s === 0 || s >= CONFIG.envioGratisDesde ? 0 : CONFIG.costoEnvio;
-    },
-
     total() {
-      return this.subtotal() + this.envio();
+      return this.subtotal();
     },
   };
 
@@ -119,11 +114,9 @@
       "",
       lineas.join("\n"),
       "",
-      "Subtotal: " + money(Cart.subtotal()),
-      Cart.envio() === 0 ? "Envío: bonificado" : "Envío: " + money(Cart.envio()),
       "Total: " + money(Cart.total()),
       "",
-      "¿Me confirmás disponibilidad y forma de pago?",
+      "¿Me confirmás disponibilidad, envío y forma de pago?",
     ];
     return partes.join("\n");
   }
@@ -242,11 +235,7 @@
 
     const nota = $("[data-cart-note]");
     if (nota) {
-      const falta = CONFIG.envioGratisDesde - Cart.subtotal();
-      nota.textContent =
-        Cart.envio() === 0
-          ? "Envío bonificado 🎉 · El pedido se confirma por WhatsApp."
-          : "Te faltan " + money(falta) + " para el envío gratis · Envío: " + money(Cart.envio());
+      nota.textContent = "El envío se coordina por WhatsApp al confirmar el pedido.";
     }
   }
 
@@ -409,7 +398,6 @@
               "<div><dt>Medidas</dt><dd>" + p.medidas + "</dd></div>" +
               "<div><dt>Material</dt><dd>" + p.material + "</dd></div>" +
               "<div><dt>Disponibilidad</dt><dd>" + (p.stock ? p.tiempo : "Sin stock por ahora") + "</dd></div>" +
-              "<div><dt>Envío</dt><dd>Gratis desde " + money(CONFIG.envioGratisDesde) + "</dd></div>" +
             "</dl>" +
           "</div>" +
 
@@ -492,7 +480,6 @@
       if (el.dataset.ig === "texto") el.textContent = "@" + CONFIG.instagram;
     });
     $$("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
-    $$("[data-envio-gratis]").forEach((el) => (el.textContent = money(CONFIG.envioGratisDesde)));
   }
 
   /* ---------------- Arranque ---------------- */

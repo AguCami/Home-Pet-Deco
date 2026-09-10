@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Panel de carga · Home &amp; Pet Deco</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#211E1A">
+<link rel="icon" href="assets/img/favicon.png" type="image/png" sizes="64x64">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css?v=20260910">
+<link rel="stylesheet" href="assets/css/admin.css?v=20260910">
+</head>
+<body class="admin">
+
+<header class="abar">
+  <img class="abar__logo" src="assets/img/logo-header.png" alt="">
+  <div class="abar__t">Panel de carga<small>Home &amp; Pet Deco</small></div>
+  <a class="btn btn--ghost" href="index.html" target="_blank" rel="noopener">Ver la web</a>
+  <button class="btn btn--clay" data-exportar>Generar archivo</button>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button class="tab" role="tab" data-tab="productos" aria-selected="true">Productos</button>
+  <button class="tab" role="tab" data-tab="negocio" aria-selected="false">Datos del negocio</button>
+  <button class="tab" role="tab" data-tab="ayuda" aria-selected="false">Cómo se usa</button>
+</nav>
+
+<!-- ===================== PRODUCTOS ===================== -->
+<main class="panel" data-panel="productos">
+  <div class="cols">
+    <div class="lista-wrap">
+      <input class="buscador" type="text" data-buscador placeholder="Buscar producto…" aria-label="Buscar producto">
+      <div class="lista" data-lista></div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:9px">
+        <small style="color:var(--ink-mute);font-size:12px" data-total></small>
+        <button class="btn btn--primary" style="min-height:38px;padding:0 14px;font-size:13px;margin-left:auto" data-nuevo>+ Nuevo</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="form" data-vacio>
+        <h2>Elegí un producto</h2>
+        <p class="form__sub">Tocá uno de la lista para editarlo, o creá uno nuevo.</p>
+      </div>
+
+      <form class="form" data-form hidden autocomplete="off">
+        <h2>Editar producto</h2>
+        <p class="form__sub">Los cambios se guardan solos en este navegador. Al terminar, generá el archivo.</p>
+
+        <div class="campos">
+          <div class="ancho">
+            <label for="c-nombre">Nombre</label>
+            <input id="c-nombre" name="nombre" type="text" placeholder="Jarrón Espiral">
+          </div>
+
+          <div>
+            <label for="c-id">Identificador <span>(también es el nombre de la imagen)</span></label>
+            <input id="c-id" name="id" type="text" placeholder="jarron-espiral">
+            <p class="ayuda">La imagen tiene que estar en <code>assets/img/</code> con este mismo nombre.</p>
+            <p class="error" data-error-id></p>
+          </div>
+
+          <div>
+            <label for="c-categoria">Categoría</label>
+            <select id="c-categoria" name="categoria" class="campo">
+              <option value="hogar">Hogar</option>
+              <option value="mascotas">Mascotas</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="c-precio">Precio</label>
+            <input id="c-precio" name="precio" type="number" min="0" step="100" placeholder="18900">
+          </div>
+
+          <div>
+            <label for="c-precioAnterior">Precio anterior <span>(vacío = sin oferta)</span></label>
+            <input id="c-precioAnterior" name="precioAnterior" type="number" min="0" step="100" placeholder="">
+          </div>
+
+          <div>
+            <label for="c-etiqueta">Etiqueta <span>(vacío = ninguna)</span></label>
+            <input id="c-etiqueta" name="etiqueta" type="text" list="etiquetas" placeholder="Best seller">
+            <datalist id="etiquetas">
+              <option value="Best seller"></option><option value="Nuevo"></option>
+              <option value="Oferta"></option><option value="Personalizable"></option>
+            </datalist>
+          </div>
+
+          <div class="check">
+            <input id="c-destacado" name="destacado" type="checkbox">
+            <label for="c-destacado" style="margin:0">Mostrar en la portada</label>
+          </div>
+
+          <div class="ancho">
+            <label for="c-resumen">Resumen <span>(la línea que se ve bajo el nombre)</span></label>
+            <input id="c-resumen" name="resumen" type="text" placeholder="Vaso decorativo de líneas onduladas">
+          </div>
+
+          <div class="ancho">
+            <label for="c-descripcion">Descripción</label>
+            <textarea id="c-descripcion" name="descripcion" placeholder="Contá de qué se trata la pieza, para qué sirve y qué incluye."></textarea>
+          </div>
+
+          <div class="ancho">
+            <label>Colores disponibles</label>
+            <div class="colores" data-colores></div>
+          </div>
+
+          <div>
+            <label for="c-medidas">Medidas</label>
+            <input id="c-medidas" name="medidas" type="text" placeholder="12 × 12 × 24 cm">
+          </div>
+
+          <div>
+            <label for="c-material">Material</label>
+            <input id="c-material" name="material" type="text" list="materiales" placeholder="PLA de origen vegetal">
+            <datalist id="materiales">
+              <option value="PLA de origen vegetal"></option><option value="PLA reciclado"></option>
+              <option value="PETG"></option><option value="PETG apto contacto seco"></option>
+            </datalist>
+          </div>
+
+          <div>
+            <label for="c-tiempo">Disponibilidad</label>
+            <input id="c-tiempo" name="tiempo" type="text" list="tiempos" placeholder="Se imprime en 48 h">
+            <datalist id="tiempos">
+              <option value="Entrega inmediata"></option><option value="Se imprime en 24 h"></option>
+              <option value="Se imprime en 48 h"></option><option value="Se imprime en 72 h"></option>
+            </datalist>
+          </div>
+
+          <div class="check">
+            <input id="c-stock" name="stock" type="checkbox">
+            <label for="c-stock" style="margin:0">Se puede comprar</label>
+          </div>
+        </div>
+
+        <div class="acciones">
+          <span class="crece"></span>
+          <button class="btn btn--ghost" type="button" data-subir title="Mover arriba">↑</button>
+          <button class="btn btn--ghost" type="button" data-bajar title="Mover abajo">↓</button>
+          <button class="btn btn--ghost" type="button" data-duplicar>Duplicar</button>
+          <button class="btn btn--peligro" type="button" data-eliminar>Eliminar</button>
+        </div>
+
+        <div class="previa">
+          <h3>Así se va a ver</h3>
+          <div data-previa></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<!-- ===================== NEGOCIO ===================== -->
+<main class="panel" data-panel="negocio" hidden>
+  <form class="bloque" data-config autocomplete="off">
+    <h2>Datos del negocio</h2>
+    <p>Es lo que usan los botones de contacto y el formato de los precios.</p>
+    <div class="campos">
+      <div>
+        <label for="n-nombre">Nombre</label>
+        <input id="n-nombre" name="nombre" type="text">
+      </div>
+      <div>
+        <label for="n-whatsapp">WhatsApp</label>
+        <input id="n-whatsapp" name="whatsapp" type="text" placeholder="5493511234567">
+        <p class="ayuda">Formato internacional, sin +, sin espacios ni guiones. Para Córdoba: 549351…</p>
+      </div>
+      <div>
+        <label for="n-email">Correo</label>
+        <input id="n-email" name="email" type="text">
+      </div>
+      <div>
+        <label for="n-instagram">Instagram <span>(solo el usuario)</span></label>
+        <input id="n-instagram" name="instagram" type="text" placeholder="homepetdeco">
+      </div>
+      <div>
+        <label for="n-ciudad">Ciudad</label>
+        <input id="n-ciudad" name="ciudad" type="text">
+      </div>
+      <div>
+        <label for="n-simbolo">Símbolo de moneda</label>
+        <input id="n-simbolo" name="simbolo" type="text">
+      </div>
+    </div>
+  </form>
+
+  <div class="bloque">
+    <h2>Empezar de nuevo</h2>
+    <p>Descarta todo lo que cargaste acá y vuelve al catálogo que está publicado.</p>
+    <button class="btn btn--peligro" data-descartar>Descartar cambios</button>
+  </div>
+</main>
+
+<!-- ===================== AYUDA ===================== -->
+<main class="panel" data-panel="ayuda" hidden>
+  <div class="bloque">
+    <h2>Cómo cargar un producto</h2>
+    <ol style="padding-left:20px;font-size:14px;line-height:1.75;color:var(--ink-soft)">
+      <li>Tocá <b>+ Nuevo</b> y completá los datos. Se guarda solo mientras escribís.</li>
+      <li>Preparate la foto <b>cuadrada</b> (por ejemplo 1000 × 1000 px) y guardala con el mismo
+          nombre del identificador, en <code>assets/img/</code>.</li>
+      <li>Cuando termines, tocá <b>Generar archivo</b> y descargá el <code>data.js</code>.</li>
+      <li>Subí ese archivo a <code>assets/js/</code> en GitHub, reemplazando el que está.</li>
+      <li>En un par de minutos los cambios se ven en la web.</li>
+    </ol>
+    <p class="ayuda" style="margin-top:12px">
+      Este panel no toca la web directamente: arma el archivo y vos lo subís. Cuando montemos
+      la base de datos, va a publicar solo y este paso desaparece.
+    </p>
+  </div>
+
+  <div class="bloque">
+    <h2>Cuidado con esto</h2>
+    <ul style="padding-left:20px;font-size:14px;line-height:1.7;color:var(--ink-soft);list-style:disc">
+      <li>Lo que cargues vive <b>solo en este navegador</b> hasta que generes el archivo y lo subas.</li>
+      <li>Si abrís el panel en otra computadora, no vas a ver estos cambios.</li>
+      <li>El identificador no se puede repetir entre productos.</li>
+    </ul>
+  </div>
+</main>
+
+<!-- Aviso de cambios sin bajar -->
+<div class="aviso" data-aviso>
+  <span>Tenés cambios <b>sin descargar</b>.</span>
+  <button class="btn btn--clay" data-exportar>Generar archivo</button>
+</div>
+
+<!-- Modal de exportación -->
+<div class="modal" data-modal>
+  <div class="modal__caja">
+    <h2>Tu archivo está listo</h2>
+    <p>Este es el <code>data.js</code> con todo lo que cargaste.</p>
+    <ol>
+      <li>Descargalo o copialo.</li>
+      <li>En GitHub, entrá a <code>assets/js/data.js</code> y reemplazá el contenido.</li>
+      <li>Guardá el cambio y esperá un par de minutos.</li>
+    </ol>
+    <textarea data-salida readonly aria-label="Contenido del archivo"></textarea>
+    <div class="modal__pie">
+      <button class="btn btn--clay" data-descargar>Descargar data.js</button>
+      <button class="btn btn--ghost" data-copiar>Copiar todo</button>
+      <button class="btn btn--ghost" style="margin-left:auto" data-cerrar-modal>Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/data.js?v=20260910"></script>
+<script src="assets/js/admin.js?v=20260910"></script>
+</body>
+</html>

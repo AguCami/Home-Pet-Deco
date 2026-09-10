@@ -34,6 +34,7 @@ Hasta que lo cambies, los botones de WhatsApp apuntan a un número inventado.
 | `index.html` | Portada: hero, categorías, destacados, cómo trabajamos, preguntas frecuentes y contacto |
 | `catalogo.html` | Catálogo completo con filtro por categoría y orden por precio o nombre |
 | `producto.html?id=…` | Ficha de producto: fotos, colores, medidas, materiales y relacionados |
+| `admin.html` | Panel para cargar y editar productos sin tocar código |
 
 Además:
 
@@ -41,11 +42,31 @@ Además:
   sincroniza entre pestañas.
 - **Checkout por WhatsApp**: al finalizar se abre un chat con el pedido ya escrito
   (productos, colores, cantidades, envío y total).
-- **Envío gratis** automático a partir de un monto configurable.
 - Menú móvil a pantalla completa, botón flotante de WhatsApp, animaciones de entrada
   y soporte de `prefers-reduced-motion`.
 
 ---
+
+## El panel de carga
+
+Abrí **`admin.html`** para cargar productos con formularios, sin tocar código. Tiene la
+lista a un costado, el formulario con todos los campos y una vista previa de cómo va a
+quedar la tarjeta.
+
+Lo que cargues se guarda solo en el navegador mientras trabajás. Al terminar, tocá
+**Generar archivo**: te arma el `data.js` completo para descargar y subir a
+`assets/js/`, reemplazando el que está.
+
+Dos cosas para tener en cuenta:
+
+- Lo que cargues vive **solo en ese navegador** hasta que subas el archivo. En otra
+  computadora no vas a ver esos cambios.
+- Las fotos hay que subirlas aparte a `assets/img/`, con el mismo nombre que el
+  identificador del producto.
+
+El panel lleva `noindex`, así que no aparece en Google, pero cualquiera que sepa la
+dirección puede abrirlo. No expone nada sensible: solo edita y descarga un archivo, no
+puede publicar cambios en la web.
 
 ## Cómo editar el catálogo
 
