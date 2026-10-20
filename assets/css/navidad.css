@@ -65,18 +65,33 @@
   border-bottom: 1px solid var(--line);
   background: rgba(252,248,241,.88);
 }
+/* Guirnalda con bolitas colgando: el cable cruza de lado a lado y de él
+   cuelgan esferas alternadas. Es un SVG que se repite en horizontal. */
 [data-tema="navidad"] .header::after {
   content: "";
-  position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--pino) 0 14px,
-    var(--dorado) 14px 20px,
-    var(--rojo) 20px 26px,
-    transparent 26px 40px
-  );
-  opacity: .5;
+  position: absolute; left: 0; right: 0; bottom: -26px; height: 28px;
+  pointer-events: none;
+  background: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 28' width='120' height='28'>\
+<path d='M0 3Q30 13 60 3T120 3' fill='none' stroke='%232F5D45' stroke-width='2.5'/>\
+<g stroke='%232F5D45' stroke-width='1.6'>\
+<path d='M30 9v4'/><path d='M60 3v4'/><path d='M90 9v4'/>\
+</g>\
+<circle cx='30' cy='18' r='5.5' fill='%23A8322B'/>\
+<circle cx='60' cy='12' r='5' fill='%23C9A227'/>\
+<circle cx='90' cy='18' r='5.5' fill='%232F5D45'/>\
+<circle cx='28.2' cy='16.2' r='1.5' fill='%23FFFFFF' opacity='.5'/>\
+<circle cx='58.4' cy='10.4' r='1.4' fill='%23FFFFFF' opacity='.5'/>\
+<circle cx='88.2' cy='16.2' r='1.5' fill='%23FFFFFF' opacity='.45'/>\
+</svg>") repeat-x center top;
 }
+
+/* La guirnalda cuelga por fuera del encabezado: hay que dejarle lugar
+   para que no tape el contenido de abajo. */
+[data-tema="navidad"] .header { overflow: visible; }
+[data-tema="navidad"] .hero { padding-top: 46px; }
+[data-tema="navidad"] main > .wrap:first-child,
+[data-tema="navidad"] main.pd > .wrap:first-child { padding-top: 46px; }
 
 /* ============================================================
    Hero: acebo en una esquina de la foto
@@ -112,6 +127,30 @@
 }
 
 /* ============================================================
+   Superficies grandes
+   Son las que de verdad hacen que el sitio se vea navideño: los
+   detalles chicos solos no alcanzan.
+   ============================================================ */
+
+/* El botón principal pasa de negro a verde pino */
+[data-tema="navidad"] .btn--primary { background: var(--pino); color: #F6EFE2; }
+[data-tema="navidad"] .btn--primary:hover { background: #244936; }
+
+/* Las manchas difusas del fondo del hero, en rojo y verde */
+[data-tema="navidad"] .hero__blob--a { background: #D9A48F; opacity: .45; }
+[data-tema="navidad"] .hero__blob--b { background: #8FB09A; opacity: .5; }
+
+/* Las dos tarjetas de categoría: son grandes y están arriba de todo */
+[data-tema="navidad"] .cat--home { background: linear-gradient(150deg, #E9D5CF, #D9B5AC); }
+[data-tema="navidad"] .cat--pet  { background: linear-gradient(150deg, #CFE0D2, #A8C6B2); }
+
+/* La franja de destacados toma un verde muy suave */
+[data-tema="navidad"] .section--tint { background: #EAF0E9; }
+
+/* El testimonio, sobre ese verde, necesita separarse */
+[data-tema="navidad"] .quote { border: 1px solid rgba(47,93,69,.14); }
+
+/* ============================================================
    Detalles de catálogo
    ============================================================ */
 
@@ -142,8 +181,9 @@
 
 /* ============================================================
    Nieve
-   Tres capas de puntos que bajan despacio. Se mantienen muy
-   tenues: tienen que leerse como textura, no como adorno.
+   Tres capas de copos que bajan a distinta velocidad. Van en un
+   gris azulado y no en blanco: sobre el fondo crema del sitio,
+   el blanco puro es invisible.
    ============================================================ */
 .nieve { display: none; }
 
@@ -154,40 +194,44 @@
   overflow: hidden;
 }
 [data-tema="navidad"] .nieve span {
-  position: absolute; top: -10%;
-  width: 100%; height: 120%;
+  position: absolute; top: -40%;
+  width: 100%; height: 180%;
   background-repeat: repeat;
-  opacity: .5;
 }
 [data-tema="navidad"] .nieve span:nth-child(1) {
   background-image:
-    radial-gradient(2.5px 2.5px at 20% 12%, rgba(255,255,255,.95), transparent),
-    radial-gradient(2px 2px at 68% 38%, rgba(255,255,255,.9), transparent),
-    radial-gradient(2.5px 2.5px at 43% 72%, rgba(255,255,255,.9), transparent);
-  background-size: 420px 420px;
-  animation: nevar 19s linear infinite;
+    radial-gradient(5px 5px at 18% 10%, #FFFFFF, transparent 70%),
+    radial-gradient(4px 4px at 64% 34%, #FFFFFF, transparent 70%),
+    radial-gradient(5px 5px at 41% 70%, #FFFFFF, transparent 70%),
+    radial-gradient(4px 4px at 86% 84%, #FFFFFF, transparent 70%);
+  background-size: 360px 360px;
+  animation: nevar 14s linear infinite;
+  filter: drop-shadow(0 1px 1px rgba(47,93,69,.35));
+  opacity: .95;
 }
 [data-tema="navidad"] .nieve span:nth-child(2) {
   background-image:
-    radial-gradient(1.8px 1.8px at 78% 22%, rgba(255,255,255,.85), transparent),
-    radial-gradient(1.5px 1.5px at 12% 58%, rgba(255,255,255,.8), transparent),
-    radial-gradient(2px 2px at 55% 88%, rgba(255,255,255,.85), transparent);
-  background-size: 300px 300px;
-  animation: nevar 27s linear infinite;
-  opacity: .4;
+    radial-gradient(3.5px 3.5px at 76% 18%, #FFFFFF, transparent 70%),
+    radial-gradient(3px 3px at 9% 54%, #FFFFFF, transparent 70%),
+    radial-gradient(3.5px 3.5px at 52% 86%, #FFFFFF, transparent 70%);
+  background-size: 260px 260px;
+  animation: nevar 21s linear infinite;
+  filter: drop-shadow(0 1px 1px rgba(47,93,69,.3));
+  opacity: .8;
 }
 [data-tema="navidad"] .nieve span:nth-child(3) {
   background-image:
-    radial-gradient(1.2px 1.2px at 35% 30%, rgba(255,255,255,.75), transparent),
-    radial-gradient(1.2px 1.2px at 88% 66%, rgba(255,255,255,.7), transparent);
-  background-size: 220px 220px;
-  animation: nevar 36s linear infinite;
-  opacity: .32;
+    radial-gradient(2.5px 2.5px at 32% 26%, #FFFFFF, transparent 70%),
+    radial-gradient(2.5px 2.5px at 85% 62%, #FFFFFF, transparent 70%);
+  background-size: 190px 190px;
+  animation: nevar 30s linear infinite;
+  filter: drop-shadow(0 1px 1px rgba(47,93,69,.25));
+  opacity: .6;
 }
 
 @keyframes nevar {
-  from { transform: translateY(-20%); }
-  to   { transform: translateY(20%); }
+  from { transform: translateY(-22%); }
+  to   { transform: translateY(22%); }
 }
 
 /* Que no moleste a quien tiene las animaciones desactivadas */
