@@ -41,18 +41,7 @@
   letter-spacing: .01em;
   line-height: 1.4;
 }
-[data-tema="navidad"] .anuncio b { color: var(--dorado); font-weight: 700; }
-[data-tema="navidad"] .anuncio::after {
-  content: "";
-  position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--dorado) 0 10px,
-    var(--rojo) 10px 20px,
-    #F6EFE2 20px 30px
-  );
-  opacity: .85;
-}
+[data-tema="navidad"] .anuncio b { color: #F0C96B; font-weight: 700; }
 
 /* El encabezado deja de pegarse arriba de todo para que el
    anuncio no quede tapado al hacer scroll. */
@@ -127,6 +116,83 @@
 }
 
 /* ============================================================
+   Marco de luces alrededor de la foto de portada
+   ============================================================ */
+[data-tema="navidad"] .hero__art img {
+  box-shadow:
+    0 0 0 6px #FCF8F1,
+    0 0 0 9px var(--pino),
+    var(--shadow-m);
+}
+[data-tema="navidad"] .hero__art::after {
+  content: "";
+  position: absolute; z-index: 2;
+  left: -10px; right: -10px; bottom: -14px; height: 24px;
+  pointer-events: none;
+  background: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 24' width='100' height='24'>\
+<path d='M0 4Q25 14 50 4T100 4' fill='none' stroke='%232F5D45' stroke-width='2'/>\
+<circle cx='25' cy='15' r='4.5' fill='%23C9A227'/>\
+<circle cx='50' cy='6' r='4' fill='%23A8322B'/>\
+<circle cx='75' cy='15' r='4.5' fill='%23A8322B'/>\
+</svg>") repeat-x center / 100px 24px;
+}
+
+/* ============================================================
+   Franja de regalos
+   Bloque propio del tema: oculto cuando el tema está apagado.
+   ============================================================ */
+.franja-navidad { display: none; }
+
+[data-tema="navidad"] .franja-navidad {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background: var(--pino);
+  color: #F6EFE2;
+  text-align: center;
+  padding: 54px var(--pad) 58px;
+}
+[data-tema="navidad"] .franja-navidad h2 {
+  color: #F6EFE2;
+  font-size: clamp(26px, 6.5vw, 40px);
+  margin-bottom: 12px;
+}
+[data-tema="navidad"] .franja-navidad h2 em {
+  font-style: italic;
+  color: #F0C96B;
+}
+[data-tema="navidad"] .franja-navidad p {
+  color: rgba(246,239,226,.82);
+  max-width: 44ch;
+  margin: 0 auto 26px;
+  font-size: 15px;
+}
+[data-tema="navidad"] .franja-navidad .btn {
+  background: #F6EFE2;
+  color: var(--pino);
+}
+[data-tema="navidad"] .franja-navidad .btn:hover { background: #FFFFFF; }
+
+/* Acebo a los costados, fuera del texto */
+[data-tema="navidad"] .franja-navidad::before,
+[data-tema="navidad"] .franja-navidad::after {
+  content: "";
+  position: absolute; top: 50%;
+  width: 120px; height: 120px;
+  margin-top: -60px;
+  opacity: .22;
+  background: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'>\
+<g fill='%23F6EFE2'>\
+<path d='M12 40C22 18 52 12 74 24 58 44 30 52 12 40Z'/>\
+<path d='M30 56C50 60 68 78 68 100 44 94 30 76 30 56Z'/>\
+</g></svg>") no-repeat center / contain;
+}
+[data-tema="navidad"] .franja-navidad::before { left: -18px; }
+[data-tema="navidad"] .franja-navidad::after  { right: -18px; transform: scaleX(-1); }
+
+/* ============================================================
    Superficies grandes
    Son las que de verdad hacen que el sitio se vea navideño: los
    detalles chicos solos no alcanzan.
@@ -157,13 +223,25 @@
 /* La etiqueta de oferta pasa a rojo navideño */
 [data-tema="navidad"] .card__tag--clay { background: var(--rojo); }
 
-/* Un destello dorado en la esquina de las tarjetas destacadas */
+/* Un moño en la esquina de cada producto: chico, dentro de la tarjeta
+   y del lado derecho, para no pisar la etiqueta de "Best seller" u
+   "Oferta", que va a la izquierda. */
 [data-tema="navidad"] .card__media::after {
   content: "";
-  position: absolute; top: 0; right: 0;
-  width: 54px; height: 54px;
-  background: linear-gradient(225deg, rgba(201,162,39,.30), transparent 62%);
+  position: absolute; top: 7px; right: 7px;
+  width: 38px; height: 38px;
   pointer-events: none;
+  filter: drop-shadow(0 1px 2px rgba(33,30,26,.2));
+  background: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'>\
+<g fill='%23A8322B'>\
+<path d='M18 20 10 36l9-9Z'/>\
+<path d='M22 20 30 36l-9-9Z'/>\
+<path d='M20 17C11 7 3 13 6 20 9 27 16 24 20 17Z'/>\
+<path d='M20 17C29 7 37 13 34 20 31 27 24 24 20 17Z'/>\
+</g>\
+<circle cx='20' cy='18' r='4.6' fill='%23C9A227'/>\
+</svg>") no-repeat center / contain;
 }
 
 /* Los títulos de sección llevan una estrellita */
@@ -198,34 +276,50 @@
   width: 100%; height: 180%;
   background-repeat: repeat;
 }
+/* Copos con forma reconocible, pero sueltos: cada baldosa del patrón
+   es grande y lleva solo dos copos chicos, para que caigan dispersos
+   y no formen una trama tapando el contenido. */
 [data-tema="navidad"] .nieve span:nth-child(1) {
-  background-image:
-    radial-gradient(5px 5px at 18% 10%, #FFFFFF, transparent 70%),
-    radial-gradient(4px 4px at 64% 34%, #FFFFFF, transparent 70%),
-    radial-gradient(5px 5px at 41% 70%, #FFFFFF, transparent 70%),
-    radial-gradient(4px 4px at 86% 84%, #FFFFFF, transparent 70%);
-  background-size: 360px 360px;
-  animation: nevar 14s linear infinite;
-  filter: drop-shadow(0 1px 1px rgba(47,93,69,.35));
-  opacity: .95;
+  background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300' width='300' height='300'>\
+<g stroke='%23FFFFFF' stroke-width='2' stroke-linecap='round' fill='none'>\
+<g transform='translate(58 44)'>\
+<path d='M0-11V11M-9.5-5.5 9.5 5.5M9.5-5.5-9.5 5.5'/>\
+<path d='M0-6l-3.2-3.2M0-6l3.2-3.2M0 6l-3.2 3.2M0 6l3.2 3.2'/>\
+</g>\
+<g transform='translate(206 182)'>\
+<path d='M0-13V13M-11-6.5 11 6.5M11-6.5-11 6.5'/>\
+<path d='M0-7l-3.6-3.6M0-7l3.6-3.6M0 7l-3.6 3.6M0 7l3.6 3.6'/>\
+</g>\
+</g></svg>");
+  background-size: 300px 300px;
+  animation: nevar 15s linear infinite;
+  filter: drop-shadow(0 1px 2px rgba(47,93,69,.4));
+  opacity: .85;
 }
 [data-tema="navidad"] .nieve span:nth-child(2) {
-  background-image:
-    radial-gradient(3.5px 3.5px at 76% 18%, #FFFFFF, transparent 70%),
-    radial-gradient(3px 3px at 9% 54%, #FFFFFF, transparent 70%),
-    radial-gradient(3.5px 3.5px at 52% 86%, #FFFFFF, transparent 70%);
-  background-size: 260px 260px;
-  animation: nevar 21s linear infinite;
-  filter: drop-shadow(0 1px 1px rgba(47,93,69,.3));
-  opacity: .8;
+  background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' width='240' height='240'>\
+<g stroke='%23FFFFFF' stroke-width='1.8' stroke-linecap='round' fill='none'>\
+<g transform='translate(176 58)'>\
+<path d='M0-9V9M-7.8-4.5 7.8 4.5M7.8-4.5-7.8 4.5'/>\
+</g>\
+<g transform='translate(62 168)'>\
+<path d='M0-8V8M-7-4 7 4M7-4-7 4'/>\
+</g>\
+</g></svg>");
+  background-size: 240px 240px;
+  animation: nevar 23s linear infinite;
+  filter: drop-shadow(0 1px 2px rgba(47,93,69,.35));
+  opacity: .7;
 }
 [data-tema="navidad"] .nieve span:nth-child(3) {
   background-image:
     radial-gradient(2.5px 2.5px at 32% 26%, #FFFFFF, transparent 70%),
     radial-gradient(2.5px 2.5px at 85% 62%, #FFFFFF, transparent 70%);
-  background-size: 190px 190px;
-  animation: nevar 30s linear infinite;
-  filter: drop-shadow(0 1px 1px rgba(47,93,69,.25));
+  background-size: 200px 200px;
+  animation: nevar 32s linear infinite;
+  filter: drop-shadow(0 1px 1px rgba(47,93,69,.3));
   opacity: .6;
 }
 
@@ -249,17 +343,4 @@
 /* ============================================================
    Pie
    ============================================================ */
-[data-tema="navidad"] .footer { background: var(--cream-2); }
-[data-tema="navidad"] .footer::before {
-  content: "";
-  display: block;
-  height: 3px;
-  margin-bottom: 40px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--pino) 0 16px,
-    var(--dorado) 16px 24px,
-    var(--rojo) 24px 32px
-  );
-  opacity: .55;
-}
+[data-tema="navidad"] .footer { background: #EAF0E9; border-top: 3px solid var(--pino); }
