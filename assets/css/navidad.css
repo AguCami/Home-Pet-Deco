@@ -79,7 +79,10 @@
 }
 
 /* ============================================================
-   Hero: rama de pino en una esquina de la foto
+   Hero: acebo en una esquina de la foto
+   Dos hojas y tres bayas. Se eligió acebo y no una rama de pino
+   porque con formas llenas se lee claro a tamaño chico; el pino,
+   dibujado con líneas, se empastaba.
    ============================================================ */
 [data-tema="navidad"] .hero__art { position: relative; }
 [data-tema="navidad"] .hero__art::before {
@@ -89,14 +92,17 @@
   width: 132px; height: 132px;
   background: url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'>\
-<g fill='none' stroke='%232F5D45' stroke-width='5' stroke-linecap='round'>\
-<path d='M6 10c26 6 48 24 62 48'/>\
-<path d='M14 8c2 12 0 22-6 30M30 18c4 11 4 21 0 30M48 34c5 10 6 20 4 29M62 54c7 7 11 15 13 24'/>\
-<path d='M8 16c12 1 22 5 29 11M20 30c12 2 21 7 28 14M36 48c11 4 19 10 24 18'/>\
+<g fill='%232F5D45'>\
+<path d='M12 40C22 18 52 12 74 24 58 44 30 52 12 40Z'/>\
+<path d='M30 56C50 60 68 78 68 100 44 94 30 76 30 56Z'/>\
 </g>\
-<circle cx='74' cy='70' r='8' fill='%23A8322B'/>\
-<circle cx='88' cy='58' r='6' fill='%23C9A227'/>\
-<circle cx='62' cy='84' r='5' fill='%23A8322B'/>\
+<g fill='none' stroke='%23F6EFE2' stroke-width='2.4' stroke-linecap='round' opacity='.65'>\
+<path d='M18 38C34 28 56 24 70 26'/>\
+<path d='M36 60C48 70 60 84 64 96'/>\
+</g>\
+<circle cx='78' cy='52' r='8' fill='%23A8322B'/>\
+<circle cx='95' cy='45' r='6' fill='%23A8322B'/>\
+<circle cx='88' cy='65' r='6.5' fill='%23C9A227'/>\
 </svg>") no-repeat center / contain;
   pointer-events: none;
   filter: drop-shadow(0 2px 4px rgba(33,30,26,.14));

@@ -202,7 +202,7 @@ encabezado mantiene siempre la misma altura (`--header-h`). El naranja del logo 
 ## El tema navideño
 
 El sitio puede mostrarse con una capa navideña: barra de anuncio, verde pino en lugar del
-verde salvia, guirnalda bajo el encabezado, rama de pino sobre la foto de portada, detalles
+verde salvia, guirnalda bajo el encabezado, acebo sobre la foto de portada, detalles
 dorados y nieve muy suave de fondo.
 
 Vive entero en **`assets/css/navidad.css`** y todas sus reglas cuelgan de
