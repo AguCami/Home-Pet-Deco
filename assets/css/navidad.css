@@ -1,0 +1,215 @@
+/* ============================================================
+   Home & Pet Deco — capa navideña
+   ------------------------------------------------------------
+   Todo acá adentro vive bajo [data-tema="navidad"]. El diseño
+   original no se modifica: para volver a él, se saca ese
+   atributo del <html> de las páginas y listo.
+
+   La idea es un guiño, no un disfraz: se conserva la paleta
+   cálida de la marca y se suman verde pino, dorado y detalles.
+   ============================================================ */
+
+[data-tema="navidad"] {
+  /* El verde salvia se vuelve pino: es el cambio que más se nota
+     y el que mejor convive con el terracota de la marca. */
+  --sage:       #2F5D45;
+  --pino:       #2F5D45;
+  --pino-claro: #4A7C5D;
+  --dorado:     #C9A227;
+  --rojo:       #A8322B;
+  /* El fondo toma un punto más de calidez */
+  --cream:      #FCF8F1;
+  --cream-2:    #F4EADC;
+}
+
+/* ============================================================
+   Barra de anuncio
+   Va en el HTML de las tres páginas pero solo se muestra con el
+   tema activo, así desactivarlo la esconde sola.
+   ============================================================ */
+.anuncio { display: none; }
+
+[data-tema="navidad"] .anuncio {
+  display: block;
+  position: relative;
+  background: var(--pino);
+  color: #F6EFE2;
+  text-align: center;
+  padding: 9px 16px;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: .01em;
+  line-height: 1.4;
+}
+[data-tema="navidad"] .anuncio b { color: var(--dorado); font-weight: 700; }
+[data-tema="navidad"] .anuncio::after {
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--dorado) 0 10px,
+    var(--rojo) 10px 20px,
+    #F6EFE2 20px 30px
+  );
+  opacity: .85;
+}
+
+/* El encabezado deja de pegarse arriba de todo para que el
+   anuncio no quede tapado al hacer scroll. */
+[data-tema="navidad"] .header { top: 0; }
+
+/* ============================================================
+   Guirnalda bajo el encabezado
+   ============================================================ */
+[data-tema="navidad"] .header {
+  border-bottom: 1px solid var(--line);
+  background: rgba(252,248,241,.88);
+}
+[data-tema="navidad"] .header::after {
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--pino) 0 14px,
+    var(--dorado) 14px 20px,
+    var(--rojo) 20px 26px,
+    transparent 26px 40px
+  );
+  opacity: .5;
+}
+
+/* ============================================================
+   Hero: rama de pino en una esquina de la foto
+   ============================================================ */
+[data-tema="navidad"] .hero__art { position: relative; }
+[data-tema="navidad"] .hero__art::before {
+  content: "";
+  position: absolute; z-index: 2;
+  top: -16px; left: -12px;
+  width: 132px; height: 132px;
+  background: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'>\
+<g fill='none' stroke='%232F5D45' stroke-width='5' stroke-linecap='round'>\
+<path d='M6 10c26 6 48 24 62 48'/>\
+<path d='M14 8c2 12 0 22-6 30M30 18c4 11 4 21 0 30M48 34c5 10 6 20 4 29M62 54c7 7 11 15 13 24'/>\
+<path d='M8 16c12 1 22 5 29 11M20 30c12 2 21 7 28 14M36 48c11 4 19 10 24 18'/>\
+</g>\
+<circle cx='74' cy='70' r='8' fill='%23A8322B'/>\
+<circle cx='88' cy='58' r='6' fill='%23C9A227'/>\
+<circle cx='62' cy='84' r='5' fill='%23A8322B'/>\
+</svg>") no-repeat center / contain;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(33,30,26,.14));
+}
+@media (max-width: 699px) {
+  [data-tema="navidad"] .hero__art::before { width: 96px; height: 96px; top: -12px; left: -8px; }
+}
+
+/* ============================================================
+   Detalles de catálogo
+   ============================================================ */
+
+/* La etiqueta de oferta pasa a rojo navideño */
+[data-tema="navidad"] .card__tag--clay { background: var(--rojo); }
+
+/* Un destello dorado en la esquina de las tarjetas destacadas */
+[data-tema="navidad"] .card__media::after {
+  content: "";
+  position: absolute; top: 0; right: 0;
+  width: 54px; height: 54px;
+  background: linear-gradient(225deg, rgba(201,162,39,.30), transparent 62%);
+  pointer-events: none;
+}
+
+/* Los títulos de sección llevan una estrellita */
+[data-tema="navidad"] .section__head .eyebrow::after {
+  content: " ✦";
+  color: var(--dorado);
+}
+
+/* Las fichas de "cómo trabajamos" numeradas en dorado */
+[data-tema="navidad"] .step::before { color: var(--dorado); }
+
+/* El bloque de contacto, en verde pino en lugar de tinta */
+[data-tema="navidad"] .contact-card { background: var(--pino); }
+[data-tema="navidad"] .contact-card p { color: rgba(246,239,226,.78); }
+
+/* ============================================================
+   Nieve
+   Tres capas de puntos que bajan despacio. Se mantienen muy
+   tenues: tienen que leerse como textura, no como adorno.
+   ============================================================ */
+.nieve { display: none; }
+
+[data-tema="navidad"] .nieve {
+  display: block;
+  position: fixed; inset: 0; z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+[data-tema="navidad"] .nieve span {
+  position: absolute; top: -10%;
+  width: 100%; height: 120%;
+  background-repeat: repeat;
+  opacity: .5;
+}
+[data-tema="navidad"] .nieve span:nth-child(1) {
+  background-image:
+    radial-gradient(2.5px 2.5px at 20% 12%, rgba(255,255,255,.95), transparent),
+    radial-gradient(2px 2px at 68% 38%, rgba(255,255,255,.9), transparent),
+    radial-gradient(2.5px 2.5px at 43% 72%, rgba(255,255,255,.9), transparent);
+  background-size: 420px 420px;
+  animation: nevar 19s linear infinite;
+}
+[data-tema="navidad"] .nieve span:nth-child(2) {
+  background-image:
+    radial-gradient(1.8px 1.8px at 78% 22%, rgba(255,255,255,.85), transparent),
+    radial-gradient(1.5px 1.5px at 12% 58%, rgba(255,255,255,.8), transparent),
+    radial-gradient(2px 2px at 55% 88%, rgba(255,255,255,.85), transparent);
+  background-size: 300px 300px;
+  animation: nevar 27s linear infinite;
+  opacity: .4;
+}
+[data-tema="navidad"] .nieve span:nth-child(3) {
+  background-image:
+    radial-gradient(1.2px 1.2px at 35% 30%, rgba(255,255,255,.75), transparent),
+    radial-gradient(1.2px 1.2px at 88% 66%, rgba(255,255,255,.7), transparent);
+  background-size: 220px 220px;
+  animation: nevar 36s linear infinite;
+  opacity: .32;
+}
+
+@keyframes nevar {
+  from { transform: translateY(-20%); }
+  to   { transform: translateY(20%); }
+}
+
+/* Que no moleste a quien tiene las animaciones desactivadas */
+@media (prefers-reduced-motion: reduce) {
+  [data-tema="navidad"] .nieve { display: none; }
+}
+
+/* La nieve no debe taparle nada al contenido ni al carrito */
+[data-tema="navidad"] .header,
+[data-tema="navidad"] .anuncio,
+[data-tema="navidad"] main,
+[data-tema="navidad"] .footer { position: relative; z-index: 2; }
+[data-tema="navidad"] .header { z-index: 60; }
+
+/* ============================================================
+   Pie
+   ============================================================ */
+[data-tema="navidad"] .footer { background: var(--cream-2); }
+[data-tema="navidad"] .footer::before {
+  content: "";
+  display: block;
+  height: 3px;
+  margin-bottom: 40px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--pino) 0 16px,
+    var(--dorado) 16px 24px,
+    var(--rojo) 24px 32px
+  );
+  opacity: .55;
+}
