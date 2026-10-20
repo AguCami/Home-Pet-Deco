@@ -79,7 +79,7 @@ Dos límites de este esquema:
 El panel lleva `noindex` y no hay ningún enlace hacia él desde el sitio. No expone nada
 sensible: solo edita y arma un archivo, no puede publicar por su cuenta.
 
-## Cómo editar el catálogo## Cómo editar el catálogo
+## Cómo editar el catálogo
 
 Todo el catálogo vive en `assets/js/data.js`. Para agregar un producto, copiá un bloque
 y cambiale los valores:
@@ -123,12 +123,12 @@ const imagen = (id) => "assets/img/" + id + ".svg";   // ← cambiar .svg por .j
 
 ## Por qué el CSS lleva `?v=`
 
-Los enlaces al CSS y al JavaScript terminan en `?v=20260908`. Sirve para que, cuando
-cambies el diseño, el navegador de quien ya visitó el sitio no siga mostrando la versión
-vieja guardada en su caché.
+Los enlaces al CSS y al JavaScript terminan en `?v=` seguido de una fecha. Sirve para que,
+cuando cambies el diseño, el navegador de quien ya visitó el sitio no siga mostrando la
+versión vieja guardada en su caché.
 
-**Cada vez que cambies `styles.css`, `data.js` o `app.js`, subí ese número** (lo más
-simple es poner la fecha del día) en las tres páginas: `index.html`, `catalogo.html` y
+**Cada vez que cambies un archivo de `assets/css/` o `assets/js/`, subí ese número** (lo
+más simple es poner la fecha del día) en las tres páginas: `index.html`, `catalogo.html` y
 `producto.html`. Si no lo hacés, tus cambios pueden tardar horas en verse.
 
 ## Cómo verlo en tu computadora
@@ -198,6 +198,26 @@ En el encabezado el logo va acompañado del nombre escrito en Fraunces, en dos l
 ("Home & Pet" arriba, "Deco" abajo) alineadas a la izquierda. El
 encabezado mantiene siempre la misma altura (`--header-h`). El naranja del logo es
 `#E47416` y está en el CSS como la variable `--naranja`.
+
+## El tema navideño
+
+El sitio puede mostrarse con una capa navideña: barra de anuncio, verde pino en lugar del
+verde salvia, guirnalda bajo el encabezado, rama de pino sobre la foto de portada, detalles
+dorados y nieve muy suave de fondo.
+
+Vive entero en **`assets/css/navidad.css`** y todas sus reglas cuelgan de
+`[data-tema="navidad"]`. El diseño original **no se modifica**: es la misma hoja de estilos
+de siempre con una capa encima.
+
+**Para apagarlo** (en enero, por ejemplo): borrá `data-tema="navidad"` del `<html>` de
+`index.html`, `catalogo.html` y `producto.html`. Hay un comentario arriba de cada uno
+marcando la línea. Con eso vuelve el sitio de siempre; la barra de anuncio y la nieve
+desaparecen solas porque también dependen de ese atributo.
+
+**Para encenderlo de nuevo**: volvé a poner el atributo. No hace falta tocar nada más.
+
+**La fecha del anuncio** está escrita en el HTML de las tres páginas, en el `<div
+class="anuncio">`. Buscá "18 de diciembre" y cambialo por el límite real de pedidos.
 
 ## Paleta y tipografías
 
