@@ -199,25 +199,53 @@ En el encabezado el logo va acompañado del nombre escrito en Fraunces, en dos l
 encabezado mantiene siempre la misma altura (`--header-h`). El naranja del logo es
 `#E47416` y está en el CSS como la variable `--naranja`.
 
-## El tema navideño
+## El tema navideño (apagado)
 
 El sitio puede mostrarse con una capa navideña: barra de anuncio, verde pino en lugar del
 verde salvia, guirnalda bajo el encabezado, acebo sobre la foto de portada, detalles
 dorados y nieve muy suave de fondo.
 
-Vive entero en **`assets/css/navidad.css`** y todas sus reglas cuelgan de
-`[data-tema="navidad"]`. El diseño original **no se modifica**: es la misma hoja de estilos
-de siempre con una capa encima.
+**Ahora está apagado**: el sitio se ve con el diseño de siempre. La capa quedó guardada
+entera en `assets/css/navidad.css` para volver a usarla cuando haga falta; el diseño
+original nunca se modificó.
 
-**Para apagarlo** (en enero, por ejemplo): borrá `data-tema="navidad"` del `<html>` de
-`index.html`, `catalogo.html` y `producto.html`. Hay un comentario arriba de cada uno
-marcando la línea. Con eso vuelve el sitio de siempre; la barra de anuncio y la nieve
-desaparecen solas porque también dependen de ese atributo.
+**Para encenderlo** hay que tocar las tres páginas (`index.html`, `catalogo.html` y
+`producto.html`). En cada una:
 
-**Para encenderlo de nuevo**: volvé a poner el atributo. No hace falta tocar nada más.
+1. Agregar el atributo en la etiqueta `<html>`:
 
-**La fecha del anuncio** está escrita en el HTML de las tres páginas, en el `<div
-class="anuncio">`. Buscá "18 de diciembre" y cambialo por el límite real de pedidos.
+   ```html
+   <html lang="es" data-tema="navidad">
+   ```
+
+2. Sumar la hoja de estilos abajo de `styles.css`, en el `<head>`:
+
+   ```html
+   <link rel="stylesheet" href="assets/css/navidad.css?v=20261021">
+   ```
+
+3. Poner la barra de anuncio y la nieve justo después de `<body>`, antes del `<header>`:
+
+   ```html
+   <div class="anuncio">Navidad en casa · Pedí hasta el <b>18 de diciembre</b> y llega antes de Nochebuena</div>
+   <div class="nieve" aria-hidden="true"><span></span><span></span><span></span></div>
+   ```
+
+   La fecha del anuncio se escribe acá: cambiá "18 de diciembre" por el límite real de
+   pedidos.
+
+Y en `index.html`, además, la franja de regalos antes de la sección de contacto:
+
+```html
+<section class="franja-navidad">
+  <h2>Un regalo que <em>no se parece a ningún otro</em></h2>
+  <p>Elegís el color, nosotros lo imprimimos y te llega listo para envolver.</p>
+  <a class="btn" href="catalogo.html">Ver el catálogo</a>
+</section>
+```
+
+Acordate de subir el `?v=` de todos los enlaces (ver más arriba), o los cambios pueden
+tardar horas en verse.
 
 ## Paleta y tipografías
 
